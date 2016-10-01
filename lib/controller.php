@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/view-helpers.php';
+require_once(VIEWSCRIPTS . '/global.php');
 
 // router
 if (!getRequest()) {
@@ -10,16 +11,13 @@ if (!getRequest()) {
         }
     }
 } else {
-    require_once(VIEWSCRIPTS . '/global.php');
     if(file_exists(VIEWSCRIPTS . '/' . getRequest() . '.php')){
         include(VIEWSCRIPTS . '/' . getRequest() . '.php');
     }
-    include(ROOT . '/views/layouts/standard.php');
-}
-
-function echoContent()
-{
+    ob_start();
     include(TEMPLATES . '/' . getRequest() . '.php');
+    $layoutContent = ob_get_clean();
+    include(ROOT . '/views/layouts/standard.php');
 }
 
 function getRequest()
@@ -28,14 +26,4 @@ function getRequest()
         return $_GET['view'];
     }
     return null;
-}
-
-function echoLayoutTop()
-{
-    include(ROOT . '/views/includes/layout-top.php');
-}
-
-function echoLayoutBottom()
-{
-    include(ROOT . '/views/includes/layout-bottom.php');
 }

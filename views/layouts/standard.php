@@ -5,6 +5,6 @@
     <title>Medialisk Templater</title>
 </head>
 <body>
-    <?php echoContent(); ?>
+    <?= $layoutContent; ?>
 </body>
 </html>

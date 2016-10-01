@@ -3,9 +3,8 @@
 // Here file all variables will be prepared set that to be used in the template
 ///////////////////////////////////////////////////////////////////////////////
 
-/* example data
----------------
-
+// example data
+// ---------------
 $mainTitleTop = 'I am the Main title';
 $mainText = 'This is the main Text';
 $someExampleBlocks = [
@@ -29,4 +28,3 @@ $navigation = renderNavigation([
     ]],
     ['Kontakt', []]
 ]);
-*/

@@ -1,3 +1,4 @@
+<nav><?= $navigation ?></nav>
 <section class="title-section">
     <h1><?= $mainTitleTop ?></h1>
 </section>
