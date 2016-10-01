@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/view-helpers.php';
+
 // router
 if (!getRequest()) {
     foreach (scandir(TEMPLATES) as $view) {
@@ -8,14 +10,15 @@ if (!getRequest()) {
         }
     }
 } else {
+    require_once(VIEWSCRIPTS . '/global.php');
+    if(file_exists(VIEWSCRIPTS . '/' . getRequest() . '.php')){
+        include(VIEWSCRIPTS . '/' . getRequest() . '.php');
+    }
     include(ROOT . '/views/layouts/standard.php');
 }
 
 function echoContent()
 {
-    if(file_exists(VIEWSCRIPTS . '/' . getRequest() . '.php')){
-        include(VIEWSCRIPTS . '/' . getRequest() . '.php');
-    }
     include(TEMPLATES . '/' . getRequest() . '.php');
 }
 
